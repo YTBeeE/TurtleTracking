@@ -42,14 +42,33 @@ while lineString:
     obs_lat = lineData[6]     # Observation Latitude
     obs_lon = lineData[7]     # Observation Longitude   
     
-    #  Print information to the use
+    
     if ob_lc in ("1","2","3"):
         date_dict[record_id] = obs_date
         location_dict[record_id] = (obs_lat, obs_lon)
-        print (f"Record {record_id} indicates Sara was seen at {obs_lat}N and {obs_lon}W on {obs_date}")
+        # Print information to the use
+        # print (f"Record {record_id} indicates Sara was seen at {obs_lat}N and {obs_lon}W on {obs_date}")
 
 
     lineString = file_object.readline()
     # move to the next line
 file_object.close()
 
+
+
+# Ask the user for a date, specifying the format
+user_date = input("Enter a date (M/D/YYYY): ")
+# input() will always return a string 
+
+keys = []
+# Loop through all key, value pairs in the date_dictionary
+for key, value in date_dict.items():
+    #See if the date (the value) matches the user date
+    if value == user_date:
+        print(key,value)
+        keys.append(key)
+
+#Reveal locations for each key in matching_keys
+for key in keys:
+    lat, lng = location_dict[key]
+    print(f"On {user_date}, Sara the the turtle was seen at {lat}d Lat, {lng}d Lng.")
