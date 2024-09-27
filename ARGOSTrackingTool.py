@@ -53,40 +53,19 @@ file_name = 'data/raw/Sara.txt'
 #Create a file object from the file
 file_object = open(file_name,'r')
 
+lineString = file_object.readline()
 
-# for loop needs to store the entire contents of the text
-# if the file is enormous 
-# A while loop, combined with using the readline() function (vs readlines()) 
-# allows us to process just one line at a time, 
-# bypassing the need to load the entire file into memory.
-
-#Read contents of file into a list
-line_list = file_object.readlines()
-
-#Close the file
-file_object.close()
-
-#Pretend we read one line of data from the file
-# lineString = line_list[16]
-
-
-
-# for lineString in line_list[17:]:
-# [0:15] are metatdata, starting with #
-# title is line [16], starting with uid
-# data starts from [17], which are numeric 
-# therefore, we can have a if to evaluates 
-# whether the first character of lineString occurs “in” the tuple ("#","u")
-
-for lineString in line_list:
-    if lineString[0] in ("#", "u"):
-        # print(lineString)
+while lineString: 
+    # as long as the lineString != "" is not null (whihc means the end of the file)
+    if lineString[0] in ("#","u"):
+        print(lineString)
+        lineString = file_object.readline()
+        # to move to next line
+        # because the continue skip all indented code under while loop
+        # it will never move to the next line and repeat the fist line forever 
+        
         continue
-
-
     
-    # Use the split command to parse the items in lineString into a list object
-    # lineData = lineString.split("\t")
     lineData = lineString.split()
     
     # Assign variables to specfic items in the list
@@ -94,10 +73,61 @@ for lineString in line_list:
     obs_date = lineData[2]   # Observation date
     ob_lc = lineData[3]       # Observation Location Class
     obs_lat = lineData[6]     # Observation Latitude
-    obs_lon = lineData[7]     # Observation Longitude
+    obs_lon = lineData[7]     # Observation Longitude   
     
-    # Print information to the use
-    print (f"Record {record_id} indicates Sara was seen at {obs_lat}N and {obs_lon}W on {obs_date}")
+    #  Print information to the use
+    # print (f"Record {record_id} indicates Sara was seen at {obs_lat}N and {obs_lon}W on {obs_date}")
+
+
+    lineString = file_object.readline()
+    # move to the next line
+file_object.close()
+
+
+# # for loop needs to store the entire contents of the text
+# # if the file is enormous 
+# # A while loop, combined with using the readline() function (vs readlines()) 
+# # allows us to process just one line at a time, 
+# # bypassing the need to load the entire file into memory.
+
+# #Read contents of file into a list
+# line_list = file_object.readlines()
+
+# #Close the file
+# file_object.close()
+
+# #Pretend we read one line of data from the file
+# # lineString = line_list[16]
+
+
+
+# # for lineString in line_list[17:]:
+# # [0:15] are metatdata, starting with #
+# # title is line [16], starting with uid
+# # data starts from [17], which are numeric 
+# # therefore, we can have a if to evaluates 
+# # whether the first character of lineString occurs “in” the tuple ("#","u")
+
+# for lineString in line_list:
+#     if lineString[0] in ("#", "u"):
+#         # print(lineString)
+#         continue
+
+
+    
+#     # Use the split command to parse the items in lineString into a list object
+#     # lineData = lineString.split("\t")
+#     lineData = lineString.split()
+    
+#     # Assign variables to specfic items in the list
+#     record_id = lineData[0]   # ARGOS tracking record ID
+#     obs_date = lineData[2]   # Observation date
+#     ob_lc = lineData[3]       # Observation Location Class
+#     obs_lat = lineData[6]     # Observation Latitude
+#     obs_lon = lineData[7]     # Observation Longitude
+    
+#     # Print information to the use
+#     # print (f"Record {record_id} indicates Sara was seen at {obs_lat}N and {obs_lon}W on {obs_date}")
 
 
 
