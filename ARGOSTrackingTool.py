@@ -65,8 +65,12 @@ keys = []
 for key, value in date_dict.items():
     #See if the date (the value) matches the user date
     if value == user_date:
-        print(key,value)
+        # print(key,value)
         keys.append(key)
+
+# Report whether no keys were found
+if len(keys) == 0:
+    print(f"Sara was not located on {user_date}")
 
 #Reveal locations for each key in matching_keys
 for key in keys:
