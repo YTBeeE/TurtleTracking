@@ -71,8 +71,8 @@ for key, value in date_dict.items():
 # Report whether no keys were found
 if len(keys) == 0:
     print(f"Sara was not located on {user_date}")
-
-#Reveal locations for each key in matching_keys
-for key in keys:
-    lat, lng = location_dict[key]
-    print(f"On {user_date}, Sara the the turtle was seen at {lat}d Lat, {lng}d Lng.")
+else:
+    #Reveal locations for each key in matching_keys
+    for key in keys:
+        lat, lng = location_dict[key]
+        print(f"On {user_date}, Sara the the turtle was seen at {lat}d Lat, {lng}d Lng.")
